@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<style>
+		.sel {
+			border: solid 1px red;
+		}
+		.testImg{
+			width: 100px;
+			height: 100px;
+		}
+		
+		.number {
+            position: absolute;
+            background-color: red;
+			left: 3px;
+            color: #fff;
+            line-height: 23px;
+            width: 23px;
+            border-radius: 24px;
+            text-align: center;
+            font-size: 17px;
+        }
+		
+		.imgindex {
+			display: inline;
+			position: relative;
+		}
+	</style>
+	<body>
+		<div id="test" style="height: 50px;">
+			<div class="imgindex">
+				<img class="testImg" id="testImg1" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(1)"/>
+				<span class="number" id="number1"></span>
+			</div>
+			<div class="imgindex">
+				<img class="testImg" id="testImg2" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(2)" />
+				<span class="number" id="number2"></span>
+			</div>
+			<div class="imgindex">
+				<img class="testImg" id="testImg3" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(3)" />
+				<span class="number" id="number3"></span>
+			</div>
+			<div class="imgindex">
+				<img class="testImg" id="testImg4" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(4)" />
+				<span class="number" id="number4"></span>
+			</div>
+			<div class="imgindex">
+				<img class="testImg" id="testImg5" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(5)" />
+				<span class="number" id="number5"></span>
+			</div>
+			<div class="imgindex">
+				<img class="testImg" id="testImg6" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986451467,394304688&fm=26&gp=0.jpg" onclick="clickImg(6)" />
+				<span class="number" id="number6"></span>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var count = 0;
+		
+		function clickImg(i) {
+			if($("#testImg"+i).hasClass("sel")){
+				$("#testImg"+i).removeClass("sel");
+				
+				if($("#number"+i).html()==count){
+					//count-1
+					count = count-1;
+				}else{
+					//1不变,其他减一
+					count = count-1;
+					for(var j=1;j<=$(".number").length;j++){
+						if($("#number"+j).html()&&$("#number"+j).html()>$("#number"+i).html()){
+							$("#number"+j).html($("#number"+j).html()-1);
+						}
+					}
+				}
+				$("#number"+i).html("");
+			}else{
+				$("#testImg"+i).addClass("sel");
+				count = count+1;
+				$("#number"+i).html(count);
+				
+			}
+		}
+		
+		
+	</script>
+</html>
